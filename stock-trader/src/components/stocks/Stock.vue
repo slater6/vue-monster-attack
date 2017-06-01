@@ -27,6 +27,14 @@ export default {
 			quantity: 0
 		}
 	},
+	computed: {
+		funds() {
+			return this.$store.getters.funds;
+		},
+		insufficientFunds() {
+			return (this.stock.price * this.quantity) > this.funds;
+		}
+	},
 	methods: {
 		buyStock() {
 			const order = {
@@ -38,13 +46,11 @@ export default {
 			this.$store.dispatch('buyStock', order);
 
 			this.quantity = 0;
+
 		},
 		isNotValidQuantity() {
-			return (this.quantity < 1) || (this.quantity % 1 !== 0);
+			return this.insufficientFunds || (this.quantity < 1) || (this.quantity % 1 !== 0);
 		}
-	},
-	computed: {
-
 	}
 }
 </script>

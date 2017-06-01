@@ -31,6 +31,11 @@ export default {
 			quantity: 0
 		}
 	},
+	computed: {
+		insufficientStocks() {
+			return this.quantity > this.stock.quantity;
+		}
+	},
 	methods: {
 		...mapActions({
 			sellStocks: 'sellStock'
@@ -43,14 +48,12 @@ export default {
 			};
 
 			this.sellStocks(order);
+
 			this.quantity = 0;
 		},
 		isNotValidQuantity() {
-			return (this.quantity < 1) || (this.quantity % 1 !== 0);
+			return this.insufficientStocks || (this.quantity < 1) || (this.quantity % 1 !== 0);
 		}
-	},
-	computed: {
-
 	}
 }
 </script>
