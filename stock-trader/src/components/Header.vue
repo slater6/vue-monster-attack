@@ -18,8 +18,8 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">End Day</a></li>
-				<li class="dropdown">
+				<li><a href="#" @click="endDay()">End Day</a></li>
+				<li class="dropdown" @click="toggleDropDown()" :class="{open: isDropDownOpen}">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Save &amp; Load <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Save Data</a></li>
@@ -27,7 +27,7 @@
 					</ul>
 				</li>
 			</ul>
-			<strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
+			<strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
@@ -36,10 +36,37 @@
 </template>
 
 <script>
+import {
+	mapActions
+}
+from 'vuex';
+
 export default {
+	data() {
+		return {
+			isDropDownOpen: false
+		}
+	},
 	computed: {
 		funds() {
 			return this.$store.getters.funds;
+		}
+	},
+	methods: {
+		...mapActions([
+			'randomizeStocks'
+		]),
+		endDay() {
+			this.randomizeStocks();
+		},
+		toggleDropDown() {
+			console.log(this.isDropDownOpen);
+			if (!this.isDropDownOpen) {
+				this.isDropDownOpen = true;
+				return;
+			}
+
+			this.isDropDownOpen = false;
 		}
 	}
 }

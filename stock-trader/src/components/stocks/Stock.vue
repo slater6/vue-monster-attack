@@ -4,7 +4,7 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">
           {{ stock.name }}
-          <small>(${{ stock.price }})</small>
+          <small>({{ stock.price | currency }})</small>
         </h3>
 		</div>
 		<div class="panel-body">
