@@ -12,6 +12,9 @@ export default {
 		appStock: Stock
 	},
 	computed: {
+		created() {
+			this.$store.getters.loadData;
+		},
 		stocks() {
 			return this.$store.getters.stocks;
 		}

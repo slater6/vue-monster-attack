@@ -11,7 +11,7 @@ import {
 import store from './store/store';
 
 Vue.use(VueRouter);
-Vue.user(VueResource);
+Vue.use(VueResource);
 
 Vue.filter('currency', (value) => {
   return '$' + value.toLocaleString();
