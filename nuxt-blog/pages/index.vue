@@ -3,29 +3,16 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-      <PostPreview
-        id="1"
-        title="Title"
-        previewText="Test"
-        thumbnail="https://placeimg.com/640/480/tech"
-      />
-      <PostPreview
-        id="2"
-        title="Title 2"
-        previewText="Test 2"
-        thumbnail="https://placeimg.com/640/480/tech"
-      />
-    </section>
+    <PostList></PostList>
   </div>
 </template>
 
 <script>
-import PostPreview from "@/components/Posts/PostPreview";
+import PostList from "@/components/Posts/PostList";
 
 export default {
   components: {
-    PostPreview
+    PostList
   }
 };
 </script>
@@ -60,14 +47,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>
